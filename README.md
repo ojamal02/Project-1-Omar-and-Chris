@@ -1,8 +1,8 @@
 # Project 1: Employee Reimbursement System
 
 ## Contributors 
-  -**Chris Shanor**(https://github.com/cshanor)
-  -**Omar Jamal**(https://github.com/ojamal02)
+  - **Chris Shanor**(https://github.com/cshanor)
+  - **Omar Jamal**(https://github.com/ojamal02)
   
  ## Description
  
