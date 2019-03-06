@@ -2,7 +2,7 @@ package com.revature.models;
 
 import java.util.Objects;
 
-public class Employee {
+public class User {
 
     private int user_id;
     private String username;
@@ -12,7 +12,7 @@ public class Employee {
     private String email;
     private int role_id;
 
-    public Employee() {
+    public User() {
     }
 
     public String getFirstName() {
@@ -73,7 +73,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "User{" +
                 "user_id=" + user_id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
@@ -88,14 +88,14 @@ public class Employee {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return user_id == employee.user_id &&
-                role_id == employee.role_id &&
-                username.equals(employee.username) &&
-                password.equals(employee.password) &&
-                firstName.equals(employee.firstName) &&
-                lastName.equals(employee.lastName) &&
-                email.equals(employee.email);
+        User User = (User) o;
+        return user_id == User.user_id &&
+                role_id == User.role_id &&
+                username.equals(User.username) &&
+                password.equals(User.password) &&
+                firstName.equals(User.firstName) &&
+                lastName.equals(User.lastName) &&
+                email.equals(User.email);
     }
 
     @Override
