@@ -3,10 +3,7 @@ package com.revature.DAO;
 import com.revature.models.Reimbursement;
 import com.revature.util.ConnectionFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,12 +42,48 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
-        return reimbursements;
+        return reimb;
     }
 
     @Override
-    public Reimbursement add(Reimbursement obj) {
-        return null;
+    public Reimbursement add(Reimbursement reimb) {
+        try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            conn.setAutoCommit(false);
+
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO users VALUES (0, ?, ?, ?, ?, ?)", new String[] {"user_id"});
+            pstmt.setString(1, newUser.getUsername());
+            pstmt.setString(2, newUser.getPassword());
+            pstmt.setString(3, newUser.getFirstName());
+            pstmt.setString(4, newUser.getLastName());
+            pstmt.setInt(5, newUser.getRole_id());
+
+            if(pstmt.executeUpdate() != 0) {
+
+                // Retrieve the generated primary key for the newly added user
+                ResultSet rs = pstmt.getGeneratedKeys();
+
+                // The newly added user will need a non-null wishlist
+                //newUser.setWishlist(new ArrayList<>());
+
+//				while(rs.next()) {
+//					newUser.setId(rs.getInt(1));
+//				}
+
+                conn.commit();
+
+            }
+
+        } catch (SQLIntegrityConstraintViolationException sicve) {
+            log.error(sicve.getMessage());
+            log.warn("Username already taken.");
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+        }
+
+        //if(newUser.getId() == 0) return null;
+
+        return newUser;
     }
 
     @Override
