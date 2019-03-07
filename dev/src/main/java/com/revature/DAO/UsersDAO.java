@@ -81,11 +81,11 @@ public class UsersDAO implements DAO<User>{
 
 	public User getByCredentials(String username, String password) {
 		User User = new User();
-		User users = null;
+		//User users = null;
 
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM ers_users JOIN ers_user_roles USING (ers_user_role_id) WHERE ers_username = ? AND ers_password = ?");
+			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM chrisomar.ers_users JOIN chrisomar.ers_user_roles USING (ers_user_role_id) WHERE ers_username = ? AND ers_password = ?");
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 
@@ -105,7 +105,7 @@ public class UsersDAO implements DAO<User>{
 			log.error(e.getMessage());
 		}
 
-		return users;
+		return User;
 	}
 
 	@Override

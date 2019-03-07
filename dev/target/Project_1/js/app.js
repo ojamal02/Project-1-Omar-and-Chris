@@ -39,7 +39,7 @@ async function login() {
     credentials.push(document.getElementById('password').value);
 
     console.log(credentials);
-    
+
     let response = await fetch('auth', {
         method: 'POST',
         mode: 'cors',

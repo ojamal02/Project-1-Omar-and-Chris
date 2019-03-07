@@ -44,12 +44,13 @@ async function login() {
         method: 'POST',
         mode: 'cors',
         headers: {
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(credentials)
     });
 
-    if(response.status == 200) {
+    if (response.status == 200) {
         console.log()
         document.getElementById('alert-msg').hidden = true;
         localStorage.setItem('jwt', response.headers.get('Authorization'));
@@ -149,7 +150,7 @@ async function fetchView(uri) {
         }
     });
 
-    if(response.status == 401) loadLogin();
+    if (response.status == 401) loadLogin();
     return await response.text();
 }
 

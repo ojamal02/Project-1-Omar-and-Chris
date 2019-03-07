@@ -8,6 +8,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import oracle.jdbc.driver.OracleDriver;
+
 public class ConnectionFactory {
 	
 	private static ConnectionFactory cf = new ConnectionFactory();
@@ -23,14 +25,18 @@ public class ConnectionFactory {
 		Properties prop = new Properties();
 		
 		try {
+			
 			prop.load(new FileReader("C:\\Users\\cshan\\Project-1-Omar-and-Chris\\dev\\src\\main\\resources\\application.properties"));
 
+			DriverManager.registerDriver(new OracleDriver());
+			
 			conn = DriverManager.getConnection(
 					prop.getProperty("url"),
 					prop.getProperty("usr"),
 					prop.getProperty("pw"));
 			
 		} catch (SQLException sqle) {
+			sqle.printStackTrace();
 		} catch (FileNotFoundException fnfe) {
 			fnfe.printStackTrace();
 		} catch (IOException ioe) {
