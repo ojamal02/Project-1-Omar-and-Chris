@@ -23,7 +23,7 @@ public class ConnectionFactory {
 		Properties prop = new Properties();
 		
 		try {
-			prop.load(new FileReader("src/main/resources/application.properties"));
+			prop.load(new FileReader("C:\\Users\\cshan\\Project-1-Omar-and-Chris\\dev\\src\\main\\resources\\application.properties"));
 
 			conn = DriverManager.getConnection(
 					prop.getProperty("url"),

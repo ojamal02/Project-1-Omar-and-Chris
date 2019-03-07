@@ -2,8 +2,8 @@ window.onload = function() {
     document.getElementById('to-login').addEventListener('click', loadLogin);
     document.getElementById('to-register').addEventListener('click', loadRegister);
     document.getElementById('to-dashboard').addEventListener('click', loadDashboard);
-    document.getElementById('to-logout').addEventListener('click', logout);
-}
+    //document.getElementById('to-logout').addEventListener('click', logout);
+};
 
 /*
     Login component
@@ -38,6 +38,8 @@ async function login() {
     credentials.push(document.getElementById('username').value);
     credentials.push(document.getElementById('password').value);
 
+    console.log(credentials);
+
     let response = await fetch('auth', {
         method: 'POST',
         mode: 'cors',
@@ -48,6 +50,7 @@ async function login() {
     });
 
     if(response.status == 200) {
+        console.log()
         document.getElementById('alert-msg').hidden = true;
         localStorage.setItem('jwt', response.headers.get('Authorization'));
         loadDashboard();
