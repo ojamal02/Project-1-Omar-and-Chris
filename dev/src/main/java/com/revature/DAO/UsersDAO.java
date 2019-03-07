@@ -28,7 +28,7 @@ public class UsersDAO implements DAO<User>{
 
 			while(rs.next()) {
 
-				User.setUser_id(rs.getInt("ers_user_id"));
+				User.setUser_id(rs.getInt("ers_users_id"));
 				User.setUsername(rs.getString("ers_username"));
 				User.setPassword(rs.getString("ers_password"));
 				User.setFirstName(rs.getString("user_first_name"));
@@ -60,7 +60,7 @@ public class UsersDAO implements DAO<User>{
 			ResultSet rs = prepState.executeQuery();
 
 			while(rs.next()) {
-				User.setUser_id(rs.getInt("ers_user_id"));
+				User.setUser_id(rs.getInt("ers_users_id"));
 				User.setUsername(rs.getString("ers_username"));
 				User.setPassword(rs.getString("ers_password"));
 				User.setFirstName(rs.getString("user_first_name"));
@@ -92,7 +92,7 @@ public class UsersDAO implements DAO<User>{
 			ResultSet rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-				User.setUser_id(rs.getInt("ers_user_id"));
+				User.setUser_id(rs.getInt("ers_users_id"));
 				User.setUsername(rs.getString("ers_username"));
 				User.setPassword(rs.getString("ers_password"));
 				User.setFirstName(rs.getString("user_first_name"));
