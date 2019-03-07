@@ -1,40 +1,44 @@
 package com.revature.util;
 
-import javax.crypto.spec.SecretKeySpec;
-import javax.xml.bind.DatatypeConverter;
-import java.security.Key;
-import io.jsonwebtoken.*;
 import java.util.Date;
 
-public class JWTGenerator {
-    //Sample method to construct a JWT
-    private String createJWT(String id, String issuer, String subject, long ttlMillis) {
+import org.apache.log4j.Logger;
 
-        //The JWT signature algorithm we will be using to sign the token
+import com.revature.models.User;
+
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
+public class JWTGenerator {
+
+    private static Logger log = Logger.getLogger(JWTGenerator.class);
+
+    public static String createJWT(User subject) {
+        log.info("Creating new JWT for: " + subject.getUsername());
+
+        // The JWT Signature Algorithm used to sign the token
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
         long nowMillis = System.currentTimeMillis();
-        Date now = new Date(nowMillis);
 
-        //We will sign our JWT with our ApiKey secret
-        byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(apiKey.getSecret());
-        Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
+        // Configure the JWT and set its claims
+        JwtBuilder builder = Jwts.builder()
+                .setId(Integer.toString(subject.getUser_id()))
+                .setSubject(subject.getUsername())
+                .setIssuer("revature")
+                .claim("role", subject.getRole_id())
+                .setExpiration(new Date(nowMillis + JWTConfig.EXPIRATION * 1000))
+                .signWith(signatureAlgorithm, JWTConfig.signingKey);
 
-        //Let's set the JWT Claims
-        JwtBuilder builder = Jwts.builder().setId(id)
-                .setIssuedAt(now)
-                .setSubject(subject)
-                .setIssuer(issuer)
-                .signWith(signatureAlgorithm, signingKey);
+        log.info("JWT successfully created");
 
-        //if it has been specified, let's add the expiration
-        if (ttlMillis >= 0) {
-            long expMillis = nowMillis + ttlMillis;
-            Date exp = new Date(expMillis);
-            builder.setExpiration(exp);
-        }
-
-        //Builds the JWT and serializes it to a compact, URL-safe string
+        // Build the JWT and serialize it into a compact, URL-safe string
         return builder.compact();
     }
+
+    private JWTGenerator() {
+        super();
+    }
+
 }

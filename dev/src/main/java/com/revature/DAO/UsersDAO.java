@@ -79,18 +79,48 @@ public class UsersDAO implements DAO<User>{
 		return User;
 	}
 
+	public User getByCredentials(String username, String password) {
+		User User = new User();
+		User users = null;
+
+		try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM ers_users JOIN ers_user_roles USING (ers_user_role_id) WHERE username = ? AND password = ?");
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+				User.setUser_id(rs.getInt("ers_user_id"));
+				User.setUsername(rs.getString("ers_username"));
+				User.setPassword(rs.getString("ers_password"));
+				User.setFirstName(rs.getString("user_first_name"));
+				User.setLastName(rs.getString("user_last_name"));
+				User.setEmail(rs.getString("user_email"));
+				User.setRole_id(rs.getInt("ers_user_role_id"));
+			}
+
+		} catch (SQLException e) {
+			log.error(e.getMessage());
+		}
+
+		return users;
+	}
+
 	@Override
 	public User add(User newUser) {
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
 			conn.setAutoCommit(false);
 
-			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO users VALUES (0, ?, ?, ?, ?, ?)", new String[] {"user_id"});
+			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)", new String[] {"user_id"});
 			pstmt.setString(1, newUser.getUsername());
 			pstmt.setString(2, newUser.getPassword());
 			pstmt.setString(3, newUser.getFirstName());
 			pstmt.setString(4, newUser.getLastName());
-			pstmt.setInt(5, newUser.getRole_id());
+			pstmt.setString(5, newUser.getEmail());
+			pstmt.setInt(6, newUser.getRole_id());
 
 			if(pstmt.executeUpdate() != 0) {
 
@@ -114,8 +144,6 @@ public class UsersDAO implements DAO<User>{
 		} catch (SQLException e) {
 			log.error(e.getMessage());
 		}
-
-		//if(newUser.getId() == 0) return null;
 
 		return newUser;
 	}
