@@ -85,7 +85,7 @@ public class UsersDAO implements DAO<User>{
 
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM ers_users JOIN ers_user_roles USING (ers_user_role_id) WHERE username = ? AND password = ?");
+			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM ers_users JOIN ers_user_roles USING (ers_user_role_id) WHERE ers_username = ? AND ers_password = ?");
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 
