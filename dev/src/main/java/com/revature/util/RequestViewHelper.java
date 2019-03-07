@@ -20,11 +20,11 @@ public class RequestViewHelper {
                 log.info("Fetching login.html");
                 return "partials/login.html";
 
-            case "/revature_book_store_v3/register.view":
+            case "/Project_1/register.view":
                 log.info("Fetching register.html");
                 return "partials/register.html";
 
-            case "/revature_book_store_v3/dashboard.view":
+            case "/Project_1/dashboard.view":
 
                 Principal principal = (Principal) request.getAttribute("principal");
 
