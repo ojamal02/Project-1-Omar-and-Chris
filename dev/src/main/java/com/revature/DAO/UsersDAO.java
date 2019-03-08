@@ -117,12 +117,12 @@ public class UsersDAO implements DAO<User>{
 
 			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO chrisomar.ers_users VALUES (0, ?, ?, ?, ?, ?, 2)", new String[] {"ers_users_id"});
 			
+			pstmt.setString(1, newUser.getUsername());
+			pstmt.setString(2, newUser.getPassword());
+			pstmt.setString(3, newUser.getFirstName());
+			pstmt.setString(4, newUser.getLastName());
+			pstmt.setString(5, newUser.getEmail());
 			
-			pstmt.setString(1, newUser.getFirstName());
-			pstmt.setString(2, newUser.getLastName());
-			pstmt.setString(3, newUser.getEmail());
-			pstmt.setString(4, newUser.getUsername());
-			pstmt.setString(5, newUser.getPassword());
 
 			if(pstmt.executeUpdate() != 0) {
 

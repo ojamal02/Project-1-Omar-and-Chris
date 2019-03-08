@@ -107,7 +107,7 @@ async function register() {
         firstName: document.getElementById('first-name').value,
         lastName: document.getElementById('last-name').value,
         email: document.getElementById('email').value,
-        role_id: 5
+        role_id: 2
     };
 
     let response = await fetch('users', {
