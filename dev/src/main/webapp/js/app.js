@@ -101,13 +101,13 @@ async function register() {
     console.log('in register()');
 
     let newUser = {
-        id: 0,
+        user_id: 0,
         username: document.getElementById('register-username').value,
         password: document.getElementById('register-password').value,
         firstName: document.getElementById('first-name').value,
         lastName: document.getElementById('last-name').value,
         email: document.getElementById('email').value,
-        role: {}
+        role_id: 5
     };
 
     let response = await fetch('users', {
