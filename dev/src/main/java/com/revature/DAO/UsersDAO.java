@@ -114,7 +114,7 @@ public class UsersDAO implements DAO<User>{
 
 			conn.setAutoCommit(false);
 
-			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO ers_users VALUES (0, ?, ?, ?, ?, ?, 2)", new String[] {"ers_users_id"});
+			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO chrisomar.ers_users VALUES (0, ?, ?, ?, ?, ?, 2)", new String[] {"ers_users_id"});
 			
 			
 			pstmt.setString(1, newUser.getFirstName());

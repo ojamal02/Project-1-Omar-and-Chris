@@ -94,6 +94,7 @@ public class UserServlet extends HttpServlet {
 		try {
 			newUser = mapper.readValue(req.getInputStream(), User.class);
 		} catch (MismatchedInputException mie) {
+			mie.printStackTrace();
 			log.error(mie.getMessage());
 			resp.setStatus(400);
 			return;

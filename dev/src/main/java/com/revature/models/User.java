@@ -102,4 +102,9 @@ public class User {
     public int hashCode() {
         return Objects.hash(user_id, username, password, firstName, lastName, email, role_id);
     }
+
+	public void setRole_id(Role role) {
+		// TODO Auto-generated method stub
+		
+	}
 }

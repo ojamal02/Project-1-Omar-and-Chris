@@ -27,7 +27,7 @@ public class JWTGenerator {
                 .setId(Integer.toString(subject.getUser_id()))
                 .setSubject(subject.getUsername())
                 .setIssuer("revature")
-                .claim("role", subject.getRole_id())
+                .claim("role", Integer.toString(subject.getRole_id()))
                 .setExpiration(new Date(nowMillis + JWTConfig.EXPIRATION * 1000))
                 .signWith(signatureAlgorithm, JWTConfig.signingKey);
 

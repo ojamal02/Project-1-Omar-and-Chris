@@ -53,12 +53,13 @@ public class JWTFilter extends HttpFilter {
             // 5. Obtain the principal/subject stored in the JWT
             Principal principal = new Principal();
             principal.setUser_id(claims.getId());
-            principal.setRole_id(claims.get("role", String.class));
+            principal.setRole_id(claims.get("role", Integer.class));
 
             // 6. Attach an attribute to the request indicating information about the principal
             req.setAttribute("principal", principal);
 
         } catch (Exception e) {
+        	e.printStackTrace();
             log.error(e.getMessage());
         }
 
