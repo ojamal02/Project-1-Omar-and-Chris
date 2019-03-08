@@ -25,6 +25,7 @@ public class RequestViewHelper {
                 return "partials/register.html";
 
             case "/Project_1/dashboard.view":
+            
 
                 Principal principal = (Principal) request.getAttribute("principal");
 

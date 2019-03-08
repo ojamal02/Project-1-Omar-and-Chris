@@ -13,7 +13,6 @@ import com.revature.util.JWTConfig;
 import org.apache.log4j.Logger;
 
 import com.revature.models.Principal;
-import com.revature.util.JWTConfig;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

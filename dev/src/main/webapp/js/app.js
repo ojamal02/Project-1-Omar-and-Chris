@@ -104,8 +104,9 @@ async function register() {
         id: 0,
         username: document.getElementById('register-username').value,
         password: document.getElementById('register-password').value,
-        firstName: document.getElementById('register-fn').value,
-        lastName: document.getElementById('register-ln').value,
+        firstName: document.getElementById('first-name').value,
+        lastName: document.getElementById('last-name').value,
+        email: document.getElementById('email').value,
         role: {}
     };
 

@@ -114,21 +114,20 @@ public class UsersDAO implements DAO<User>{
 
 			conn.setAutoCommit(false);
 
-			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO users VALUES (?, ?, ?, ?, ?, ?)", new String[] {"user_id"});
-			pstmt.setString(1, newUser.getUsername());
-			pstmt.setString(2, newUser.getPassword());
-			pstmt.setString(3, newUser.getFirstName());
-			pstmt.setString(4, newUser.getLastName());
-			pstmt.setString(5, newUser.getEmail());
-			pstmt.setInt(6, newUser.getRole_id());
+			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO ers_users VALUES (0, ?, ?, ?, ?, ?, 2)", new String[] {"ers_users_id"});
+			
+			
+			pstmt.setString(1, newUser.getFirstName());
+			pstmt.setString(2, newUser.getLastName());
+			pstmt.setString(3, newUser.getEmail());
+			pstmt.setString(4, newUser.getUsername());
+			pstmt.setString(5, newUser.getPassword());
 
 			if(pstmt.executeUpdate() != 0) {
 
 				// Retrieve the generated primary key for the newly added user
 				ResultSet rs = pstmt.getGeneratedKeys();
 
-				// The newly added user will need a non-null wishlist
-				//newUser.setWishlist(new ArrayList<>());
 
 //				while(rs.next()) {
 //					newUser.setId(rs.getInt(1));
