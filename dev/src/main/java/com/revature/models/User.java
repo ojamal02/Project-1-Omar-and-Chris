@@ -104,7 +104,7 @@ public class User {
     }
 
 	public void setRole_id(Role role) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

@@ -4,6 +4,7 @@ package com.revature.DAO;
 import java.sql.*;
 import java.util.*;
 
+import com.revature.models.Role;
 import com.revature.models.User;
 import com.revature.util.ConnectionFactory;
 import org.apache.log4j.Logger;
@@ -129,9 +130,10 @@ public class UsersDAO implements DAO<User>{
 				ResultSet rs = pstmt.getGeneratedKeys();
 
 
-//				while(rs.next()) {
-//					newUser.setId(rs.getInt(1));
-//				}
+				while(rs.next()) {
+					newUser.setUser_id(rs.getInt(1));
+					newUser.setRole_id(new Role(3));
+				}
 
 				conn.commit();
 
