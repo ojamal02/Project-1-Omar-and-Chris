@@ -9,10 +9,7 @@ public class Reimbursement {
     private int reimbID;
     private double reimbAmt;
     private Timestamp reimbSubmitted;
-    private Timestamp reimbResolved;
     private String reimbDesc;
-    private Blob reimbReceipt;
-
     // Foreign keys
     private int reimbAuthor;
     private int reimbResolver;
@@ -26,14 +23,15 @@ public class Reimbursement {
         this.reimbID = reimbID;
         this.reimbAmt = reimbAmt;
         this.reimbSubmitted = reimbSubmitted;
-        this.reimbResolved = reimbResolved;
+
         this.reimbDesc = reimbDesc;
-        this.reimbReceipt = reimbReceipt;
+
         this.reimbAuthor = reimbAuthor;
         this.reimbResolver = reimbResolver;
         this.reimbStatusID = reimbStatusID;
         this.reimbTypeID = reimbTypeID;
     }
+    
 
     public int getReimbID() {
         return reimbID;
@@ -59,13 +57,7 @@ public class Reimbursement {
         this.reimbSubmitted = reimbSubmitted;
     }
 
-    public Timestamp getReimbResolved() {
-        return reimbResolved;
-    }
-
-    public void setReimbResolved(Timestamp reimbResolved) {
-        this.reimbResolved = reimbResolved;
-    }
+    
 
     public String getReimbDesc() {
         return reimbDesc;
@@ -75,13 +67,7 @@ public class Reimbursement {
         this.reimbDesc = reimbDesc;
     }
 
-    public Blob getReimbReceipt() {
-        return reimbReceipt;
-    }
-
-    public void setReimbReceipt(Blob reimbReceipt) {
-        this.reimbReceipt = reimbReceipt;
-    }
+   
 
     public int getReimbAuthor() {
         return reimbAuthor;
@@ -121,9 +107,9 @@ public class Reimbursement {
                 "reimbID=" + reimbID +
                 ", reimbAmt=" + reimbAmt +
                 ", reimbSubmitted=" + reimbSubmitted +
-                ", reimbResolved=" + reimbResolved +
+
                 ", reimbDesc='" + reimbDesc + '\'' +
-                ", reimbReceipt=" + reimbReceipt +
+
                 ", reimbAuthor=" + reimbAuthor +
                 ", reimbResolver=" + reimbResolver +
                 ", reimbStatusID=" + reimbStatusID +
@@ -143,13 +129,13 @@ public class Reimbursement {
                 reimbStatusID == that.reimbStatusID &&
                 reimbTypeID == that.reimbTypeID &&
                 reimbSubmitted.equals(that.reimbSubmitted) &&
-                reimbResolved.equals(that.reimbResolved) &&
-                reimbDesc.equals(that.reimbDesc) &&
-                Objects.equals(reimbReceipt, that.reimbReceipt);
+      
+                reimbDesc.equals(that.reimbDesc);
+            
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(reimbID, reimbAmt, reimbSubmitted, reimbResolved, reimbDesc, reimbReceipt, reimbAuthor, reimbResolver, reimbStatusID, reimbTypeID);
+        return Objects.hash(reimbID, reimbAmt, reimbSubmitted, reimbDesc, reimbAuthor, reimbResolver, reimbStatusID, reimbTypeID);
     }
 }

@@ -1,8 +1,8 @@
 window.onload = function() {
     document.getElementById('to-login').addEventListener('click', loadLogin);
     document.getElementById('to-register').addEventListener('click', loadRegister);
-    document.getElementById('to-dashboard').addEventListener('click', loadDashboard);
-    document.getElementById('to-submitReimb').addEventListener('click', loadSubmitReimbursement);
+    //document.getElementById('to-dashboard').addEventListener('click', loadDashboard);
+    //document.getElementById('to-submitReimb').addEventListener('click', loadSubmitReimbursement);
     //document.getElementById('to-logout').addEventListener('click', logout);
 };
 
@@ -136,6 +136,7 @@ async function loadDashboard() {
     APP_VIEW.innerHTML = await fetchView('dashboard.view');
     //DYNAMIC_CSS_LINK.href = 'css/dashboard.css';
     configureDashboard();
+    document.getElementById('to-submitReimb').addEventListener('click', loadSubmitReimbursement);
 }
 
 function configureDashboard() {
@@ -160,7 +161,7 @@ async function fetchView(uri) {
 
 // Submit Reimbursement Functions
 
-async function loadSubmitReimbursement {
+async function loadSubmitReimbursement() {
     console.log('in loadSubmitReimbursement()');
     APP_VIEW.innerHTML = await fetchView('submit_reimbursement.view');
     // DYNAMIC_CSS_LINK.href = 'css/register.css';
@@ -200,7 +201,7 @@ async function reimbSubmit() {
         reimb_description: document.getElementById('description').value,
     };
 
-    let response = await fetch('users', {
+    let response = await fetch('reimb', {
         method: 'POST',
         mode: 'cors',
         headers: {

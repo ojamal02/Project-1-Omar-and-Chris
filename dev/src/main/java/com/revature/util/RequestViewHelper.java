@@ -36,11 +36,11 @@ public class RequestViewHelper {
 
                 log.info("Fetching dashboard.html");
                 return "partials/dashboard.html";
-            case "/Project_1/submit_reimbursement.html":
+            case "/Project_1/submit_reimbursement.view":
             	log.info("Fetching submit_reimbursement.html");
             	return "partials/submit_reimbursement.html";
             case "/Project_1/view_history.html":
-            	log.info("Fetching view_history.html");
+            	log.info("Fetching view_history.view");
             	return "partials/view_history.html";
 
             default:
