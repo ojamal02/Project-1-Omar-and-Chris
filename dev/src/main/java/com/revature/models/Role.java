@@ -6,12 +6,50 @@ public class Role {
 
     private int role_id;
     private String role;
-
+    
+    public Role() {
+    	super();
+    }
+    
     public Role(int role_id) {
         this.role_id = role_id;
+        
+        switch(role_id) {
+		case 1:
+			this.role = "MANAGER"; break;
+		case 2:
+		 	this.role = "EMPLOYEE"; break;
+		case 3:
+			this.role = "LOCKED"; break;
+		default:
+			this.role = "LOCKED";
+		}
     }
+    
+    public Role(String roleName) {
+		super();
+		this.role = roleName;
+		
+		switch(roleName) {
+		case "MANAGER":
+			this.role_id = 1; break;
+		case "EMPLOYEE":
+			this.role_id = 2; break;
+		case "LOCKED":
+			this.role_id = 3; break;
+		default:
+			this.role_id = 3;
+		}
+	}
+    
 
-    public int getRole_id() {
+    public Role(int role_id, String role) {
+		super();
+		this.role_id = role_id;
+		this.role = role;
+	}
+
+	public int getRole_id() {
         return role_id;
     }
 

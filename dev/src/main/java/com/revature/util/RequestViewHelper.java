@@ -27,15 +27,21 @@ public class RequestViewHelper {
             case "/Project_1/dashboard.view":
             
 
-//                Principal principal = (Principal) request.getAttribute("principal");
-//
-//                if(principal == null) {
-//                    log.warn("No principal attribute found on request object");
-//                    return null;
-//                }
+                Principal principal = (Principal) request.getAttribute("principal");
+
+                if(principal == null) {
+                    log.warn("No principal attribute found on request object");
+                    return null;
+                }
 
                 log.info("Fetching dashboard.html");
                 return "partials/dashboard.html";
+            case "/Project_1/submit_reimbursement.html":
+            	log.info("Fetching submit_reimbursement.html");
+            	return "partials/submit_reimbursement.html";
+            case "/Project_1/view_history.html":
+            	log.info("Fetching view_history.html");
+            	return "partials/view_history.html";
 
             default:
                 log.info("Invalid view requested");

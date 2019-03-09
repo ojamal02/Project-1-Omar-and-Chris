@@ -2,6 +2,7 @@ window.onload = function() {
     document.getElementById('to-login').addEventListener('click', loadLogin);
     document.getElementById('to-register').addEventListener('click', loadRegister);
     document.getElementById('to-dashboard').addEventListener('click', loadDashboard);
+    document.getElementById('to-submitReimb').addEventListener('click', loadSubmitReimbursement);
     //document.getElementById('to-logout').addEventListener('click', logout);
 };
 
@@ -22,13 +23,13 @@ async function loadLogin() {
     // });
 
     APP_VIEW.innerHTML = await fetchView('login.view');
-    DYNAMIC_CSS_LINK.href = 'css/login.css';
+    //DYNAMIC_CSS_LINK.href = 'css/login.css';
     configureLogin();
 }
 
 function configureLogin() {
     console.log('in configureLogin()');
-    document.getElementById('alert-msg').hidden = true;
+    //document.getElementById('alert-msg').hidden = true;
     document.getElementById('loginButton').addEventListener('click', login);
 }
 
@@ -52,7 +53,7 @@ async function login() {
 
     if (response.status == 200) {
         console.log()
-        document.getElementById('alert-msg').hidden = true;
+            // document.getElementById('alert-msg').hidden = true;
         localStorage.setItem('jwt', response.headers.get('Authorization'));
         loadDashboard();
     } else {
@@ -76,7 +77,7 @@ async function login() {
 async function loadRegister() {
     console.log('in loadRegister()');
     APP_VIEW.innerHTML = await fetchView('register.view');
-    DYNAMIC_CSS_LINK.href = 'css/register.css';
+    // DYNAMIC_CSS_LINK.href = 'css/register.css';
     configureRegister();
 }
 
@@ -133,7 +134,7 @@ async function register() {
 async function loadDashboard() {
     console.log('in loadDashboard()');
     APP_VIEW.innerHTML = await fetchView('dashboard.view');
-    DYNAMIC_CSS_LINK.href = 'css/dashboard.css';
+    //DYNAMIC_CSS_LINK.href = 'css/dashboard.css';
     configureDashboard();
 }
 
@@ -156,6 +157,61 @@ async function fetchView(uri) {
 }
 
 //-------------------------------------------------------------------------------------
+
+// Submit Reimbursement Functions
+
+async function loadSubmitReimbursement {
+    console.log('in loadSubmitReimbursement()');
+    APP_VIEW.innerHTML = await fetchView('submit_reimbursement.view');
+    // DYNAMIC_CSS_LINK.href = 'css/register.css';
+    configureSubmitReimbursement();
+}
+
+function configureSubmitReimbursement() {
+    console.log('in configureRegister()');
+    document.getElementById('reimb-amount').addEventListener('blur', validateReimbAmount);
+    document.getElementById('reimb-type').addEventListener('keyup', validateReimbType);
+    document.getElementById('description').addEventListener('keyup', validateDescription);
+    document.getElementById('submit-reimb').addEventListener('click', reimbSubmit);
+}
+
+function validateReimbAmount(event) {
+    console.log('in validateReimbAmount');
+    console.log(event.target.value);
+}
+
+function validateReimbType(event) {
+    console.log('in validateReimbType');
+    console.log(event.target.value);
+}
+
+function validateDescription(event) {
+    console.log('in validateDescription');
+    console.log(event.target.value);
+}
+
+async function reimbSubmit() {
+    console.log('in reimbSubmit()');
+
+    let newReimbSubmit = {
+        reimb_id: 0,
+        reimb_amount: document.getElementById('reimb-amount').value,
+        reimb_type_id: document.getElementById('reimb-type').value,
+        reimb_description: document.getElementById('description').value,
+    };
+
+    let response = await fetch('users', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+    });
+
+    let responseBody = await response.json();
+    console.log(responseBody);
+}
 
 const APP_VIEW = document.getElementById('app-view');
 const DYNAMIC_CSS_LINK = document.getElementById('dynamic-css');

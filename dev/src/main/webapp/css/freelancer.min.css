@@ -274,8 +274,11 @@ header.masthead h2 {
     }
 }
 
+#registration-look {
+    margin-top: 100px
+}
+
 .floating-label-form-group {
-    margin-top: 150px;
     position: relative;
     border-bottom: 1px solid #e9ecef
 }

@@ -22,4 +22,9 @@
     <servlet-name>RegistrationServlet</servlet-name>
     <url-pattern>/RegistrationServlet</url-pattern>
   </servlet-mapping>
+  <context-param>
+    <param-name>com.auth0.domain</param-name>
+    <param-value>chrisomar.auth0.com</param-value>
+</context-param>
+
 </web-app>
