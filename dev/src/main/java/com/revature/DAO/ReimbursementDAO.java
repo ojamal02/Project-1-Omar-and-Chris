@@ -1,8 +1,11 @@
 package com.revature.DAO;
 
+import com.revature.models.Principal;
 import com.revature.models.Reimbursement;
+import com.revature.models.Role;
 import com.revature.service.ReimbService;
 import com.revature.util.ConnectionFactory;
+
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,6 +15,7 @@ import org.apache.log4j.Logger;
 
 public class ReimbursementDAO implements DAO<Reimbursement> {
 
+	Principal principal = new Principal();
 	private static Logger log = Logger.getLogger(ReimbService.class);
     @Override
     public Reimbursement getById(int id) {
@@ -34,10 +38,7 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
                 reimb.setReimbID(rs.getInt("reimb_id"));
                 reimb.setReimbAmt(rs.getDouble("reimb_amount"));
                 reimb.setReimbSubmitted(rs.getTimestamp("reimb_submitted"));
-                reimb.setReimbResolved(rs.getTimestamp("reimb_resolved"));
                 reimb.setReimbDesc(rs.getString("reimb_description"));
-                reimb.setReimbReceipt(rs.getBlob("reimb_receipt"));
-
                 reimb.setReimbAuthor(rs.getInt("reimb_author"));
                 reimb.setReimbResolver(rs.getInt("reimb_resolver"));
                 reimb.setReimbStatusID(rs.getInt("reimb_status_id"));
@@ -58,6 +59,27 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
     	return new java.sql.Timestamp(today.getTime());
 
     }
+    
+//    public Reimbursement getByAuthor(int author_id) {
+//    	
+//    	try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
+//    		
+//    		String sql = "SELECT * FROM chrisomar.ers_reimbursement JOIN chrisomar.ers_users ON ers_reimbursement.reimb_author = ers_users.ers_users_id WHERE reimb_author = ?";
+//    	
+//    		 PreparedStatement pstmt = conn.prepareStatement(sql);
+//    		 
+//    		 pstmt.setInt(1, author_id);
+//
+//             ResultSet rs = pstmt.executeQuery();
+//             
+//             while (rs.next()) {
+//            	 
+//             }
+//    		
+//    	} catch (SQLException sqle) {
+//    		
+//    	}
+//    }
 
     @Override
     public Reimbursement add(Reimbursement reimb) {
@@ -65,14 +87,17 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
 
             conn.setAutoCommit(false);
 
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO chrisomar.ers_reimbursement VALUES (0, ?, ?, ?, <author>, <resolver>, 1, ?)", new String[] {"reimb_id"});
+           
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO chrisomar.ers_reimbursement VALUES (0, ?, ?, ?, ?, null, 1, ?)", new String[] {"reimb_id"});
             
             
             //pstmt.setInt(1, reimb.getReimbID());
             pstmt.setDouble(1, reimb.getReimbAmt());
             pstmt.setTimestamp(2, getCurrentTimeStamp());
             pstmt.setString(3, reimb.getReimbDesc());
-            pstmt.setInt(4, reimb.getReimbTypeID());
+            System.out.println(principal);
+            pstmt.setString(4, principal.getUser_id());
+            pstmt.setInt(5, reimb.getReimbTypeID());
            
 
             if(pstmt.executeUpdate() != 0) {
@@ -80,12 +105,10 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
                 // Retrieve the generated primary key for the newly added user
                 ResultSet rs = pstmt.getGeneratedKeys();
 
-                // The newly added user will need a non-null wishlist
-                //newUser.setWishlist(new ArrayList<>());
 
-//				while(rs.next()) {
-//					newUser.setId(rs.getInt(1));
-//				}
+			while(rs.next()) {
+				reimb.setReimbID(rs.getInt(1));
+			}
 
                 conn.commit();
 
@@ -132,10 +155,7 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
                 reimb.setReimbID(rs.getInt("reimb_id"));
                 reimb.setReimbAmt(rs.getDouble("reimb_amount"));
                 reimb.setReimbSubmitted(rs.getTimestamp("reimb_submitted"));
-                reimb.setReimbResolved(rs.getTimestamp("reimb_resolved"));
                 reimb.setReimbDesc(rs.getString("reimb_description"));
-                reimb.setReimbReceipt(rs.getBlob("reimb_receipt"));
-
                 reimb.setReimbAuthor(rs.getInt("reimb_author"));
                 reimb.setReimbResolver(rs.getInt("reimb_resolver"));
                 reimb.setReimbStatusID(rs.getInt("reimb_status_id"));

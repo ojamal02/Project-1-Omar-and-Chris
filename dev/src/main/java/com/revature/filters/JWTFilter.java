@@ -26,6 +26,7 @@ public class JWTFilter extends HttpFilter {
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
         log.info("Inside of JwtAuthFilter.doFilter()");
+       
 
         // 1. Get the HTTP header named "Authorization"
         String header = req.getHeader(JWTConfig.HEADER);
@@ -33,7 +34,7 @@ public class JWTFilter extends HttpFilter {
         // 2. Validate the header values and check the prefix
         if(header == null || !header.startsWith(JWTConfig.PREFIX)) {
             log.info("Request originates from an unauthenticated origin");
-
+            
             // 2.1: If there is no header, or one that we provided, then go to the next step in the filter chain (target servlet)
             chain.doFilter(req, resp);
             return;
@@ -52,7 +53,10 @@ public class JWTFilter extends HttpFilter {
 
             // 5. Obtain the principal/subject stored in the JWT
             Principal principal = new Principal();
+            
             principal.setUser_id(claims.getId());
+            log.info(principal.getUser_id());
+            log.info(claims.getId());
             principal.setRole_id(claims.get("role", String.class));
 
             // 6. Attach an attribute to the request indicating information about the principal

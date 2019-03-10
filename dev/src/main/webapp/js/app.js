@@ -194,11 +194,12 @@ function validateDescription(event) {
 async function reimbSubmit() {
     console.log('in reimbSubmit()');
 
-    let newReimbSubmit = {
-        reimb_id: 0,
-        reimb_amount: document.getElementById('reimb-amount').value,
-        reimb_type_id: document.getElementById('reimb-type').value,
-        reimb_description: document.getElementById('description').value,
+    let newReimb = {
+        reimbID: 0,
+        reimbAmt: document.getElementById('reimb-amount').value,
+        reimbTypeID: document.getElementById('reimb-type').value,
+        reimbDesc: document.getElementById('description').value,
+        reimbStatusID: 1
     };
 
     let response = await fetch('reimb', {
@@ -207,7 +208,7 @@ async function reimbSubmit() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(newUser)
+        body: JSON.stringify(newReimb)
     });
 
     let responseBody = await response.json();

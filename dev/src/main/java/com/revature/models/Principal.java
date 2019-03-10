@@ -30,7 +30,7 @@ public class Principal {
 
 
 	public void setUser_id(String id) {
-		// TODO Auto-generated method stub
+		this.user_id = id;
 		
 	}
 

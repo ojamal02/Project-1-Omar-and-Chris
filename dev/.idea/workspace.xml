@@ -6,7 +6,54 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89cb9534-c598-4b4c-b1ea-aa5458cb511d" name="Default Changelist" comment="" />
+    <list default="true" id="89cb9534-c598-4b4c-b1ea-aa5458cb511d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.sonarlint/default/.sonartmp_6133791065642177698/sonarlint-slf4j-sonar-log4599238894109996336.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/DAO/ReimbursementDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/DAO/ReimbursementDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/filters/JWTFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/filters/JWTFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/models/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/models/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revature/util/RequestViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revature/util/RequestViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/META-INF/Project_1.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/DAO/UsersDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/DAO/UsersDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/filters/JWTFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/filters/JWTFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/models/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/models/Principal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/models/Reimbursement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/models/Reimbursement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/models/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/models/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/servlets/ReimbursementServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/servlets/ReimbursementServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/util/ConnectionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/util/ConnectionFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/util/JWTGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/util/JWTGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/util/RequestViewHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/com/revature/util/RequestViewHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/classes/log4j.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/partials/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/partials/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Project_1/partials/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Project_1/partials/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DemoServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DemoServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/DAO/DAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/DAO/DAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/DAO/UsersDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/DAO/UsersDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/ExpenseReimbursementDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/ExpenseReimbursementDriver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/exception/UserNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/exception/UserNotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/filters/JWTFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/filters/JWTFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/models/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/models/Principal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/models/Reimbursement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/models/Reimbursement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/models/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/models/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/servlets/ApprovalServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/servlets/ApprovalServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/servlets/LoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/servlets/LoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/servlets/ReimbursementServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/servlets/ReimbursementServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/servlets/UserServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/servlets/UserServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/servlets/ViewServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/servlets/ViewServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/util/ConnectionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/util/ConnectionFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/util/JWTConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/util/JWTConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/util/JWTGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/util/JWTGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/revature/util/RequestViewHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/revature/util/RequestViewHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.revature/Project_1/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.revature/Project_1/pom.properties" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +76,53 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/servlets/ApprovalServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/servlets/LoginServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="24">
+              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/servlets/ReimbursementServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-504">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/filters/JWTFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -102,6 +195,17 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="Project_1 Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="width" value="980" />
@@ -147,6 +251,35 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dev" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dev" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="revature" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dev" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dev" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="revature" type="462c0819:PsiDirectoryNode" />
+              <item name="filters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dev" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dev" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="revature" type="462c0819:PsiDirectoryNode" />
+              <item name="servlets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dev" type="b2602c69:ProjectViewProjectNode" />
@@ -288,16 +421,17 @@
       <workItem from="1551883874882" duration="1276000" />
       <workItem from="1551887691583" duration="13302000" />
       <workItem from="1551982704607" duration="13000" />
+      <workItem from="1552177283854" duration="350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46821000" />
+    <option name="totallyTimeSpent" value="47171000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49856734" weight="0.20872483" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49856734" visible="true" weight="0.20872483" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Web" order="2" sideWeight="0.5007153" side_tool="true" weight="0.5284327" />
       <window_info id="Designer" order="3" />
@@ -310,7 +444,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
@@ -324,7 +458,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Database" order="4" weight="0.3295302" />
-      <window_info anchor="right" id="Maven" order="5" />
+      <window_info active="true" anchor="right" id="Maven" order="5" visible="true" weight="0.3295302" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
     </layout>
     <layout-to-restore>
@@ -402,16 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/servlets/ReimbursementServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/models/Role.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -430,16 +554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
           <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/servlets/ApprovalServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -517,16 +631,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/dashboard.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/filters/JWTFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/util/JWTConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -577,16 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/servlets/LoginServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-528">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/partials/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
@@ -619,6 +713,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="610">
           <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/servlets/ApprovalServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/servlets/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/servlets/ReimbursementServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-504">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/revature/filters/JWTFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
