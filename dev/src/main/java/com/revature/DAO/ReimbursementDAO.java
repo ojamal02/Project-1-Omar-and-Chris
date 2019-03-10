@@ -3,6 +3,7 @@ package com.revature.DAO;
 import com.revature.models.Principal;
 import com.revature.models.Reimbursement;
 import com.revature.models.Role;
+import com.revature.models.User;
 import com.revature.service.ReimbService;
 import com.revature.util.ConnectionFactory;
 
@@ -86,9 +87,9 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
         try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
             conn.setAutoCommit(false);
-
+            User user = new User();
            
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO chrisomar.ers_reimbursement VALUES (0, ?, ?, ?, ?, null, 1, ?)", new String[] {"reimb_id"});
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO chrisomar.ers_reimbursement VALUES (2, ?, ?, ?, ?, null, 1, ?)", new String[] {"reimb_id"});
             
             
             //pstmt.setInt(1, reimb.getReimbID());
@@ -96,7 +97,7 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
             pstmt.setTimestamp(2, getCurrentTimeStamp());
             pstmt.setString(3, reimb.getReimbDesc());
             System.out.println(principal);
-            pstmt.setString(4, principal.getUser_id());
+            pstmt.setInt(4, user.getUser_id());
             pstmt.setInt(5, reimb.getReimbTypeID());
            
 
