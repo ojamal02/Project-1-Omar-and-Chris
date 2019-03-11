@@ -2,7 +2,6 @@ package com.revature.DAO;
 
 import com.revature.models.Principal;
 import com.revature.models.Reimbursement;
-import com.revature.models.Role;
 import com.revature.models.User;
 import com.revature.service.ReimbService;
 import com.revature.util.ConnectionFactory;
@@ -18,35 +17,45 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
 
 	Principal principal = new Principal();
 	private static Logger log = Logger.getLogger(ReimbService.class);
-    @Override
-    public Reimbursement getById(int id) {
-    	
-    	
-    	
+    
+	
+	
+	@Override
+    public Reimbursement getById(int reimb_id) {
+    		
         Reimbursement reimb = new Reimbursement();
         ArrayList<Reimbursement> reimbursements = new ArrayList<>();
 
         try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            String sql = "SELECT * FROM ERS_Reimbursement WHERE reimb_id = ?";
+        	if(conn != null) {
+        		
+        		String sql = "SELECT * FROM chrisomar.ERS_Reimbursement WHERE reimb_id = ?";
 
-            PreparedStatement prepState = conn.prepareStatement(sql);
+                PreparedStatement prepState = conn.prepareStatement(sql);
 
-            ResultSet rs = prepState.executeQuery();
+                prepState.setInt(1, reimb_id);
+                
+                ResultSet rs = prepState.executeQuery();
+                
+                while(rs.next()) {
 
-            while(rs.next()) {
+                    reimb.setReimbID(rs.getInt("reimb_id"));
+                    reimb.setReimbAmt(rs.getDouble("reimb_amount"));
+                    reimb.setReimbSubmitted(rs.getTimestamp("reimb_submitted"));
+                    reimb.setReimbDesc(rs.getString("reimb_description"));
+                    reimb.setReimbAuthor(rs.getInt("reimb_author"));
+                    reimb.setReimbResolver(rs.getInt("reimb_resolver"));
+                    reimb.setReimbStatusID(rs.getInt("reimb_status_id"));
+                    reimb.setReimbTypeID(rs.getInt("reimb_type_id"));
 
-                reimb.setReimbID(rs.getInt("reimb_id"));
-                reimb.setReimbAmt(rs.getDouble("reimb_amount"));
-                reimb.setReimbSubmitted(rs.getTimestamp("reimb_submitted"));
-                reimb.setReimbDesc(rs.getString("reimb_description"));
-                reimb.setReimbAuthor(rs.getInt("reimb_author"));
-                reimb.setReimbResolver(rs.getInt("reimb_resolver"));
-                reimb.setReimbStatusID(rs.getInt("reimb_status_id"));
-                reimb.setReimbTypeID(rs.getInt("reimb_type_id"));
-
-                reimbursements.add(reimb);
-            }
+                    reimbursements.add(reimb);
+                }
+        		
+        	} else {
+        		throw new SQLException("A connection could not be established");
+        	}
+            
 
         } catch (SQLException sqle) {
             sqle.printStackTrace();
@@ -145,7 +154,7 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
 
         try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            String sql = "SELECT * FROM ERS_Reimbursement";
+            String sql = "SELECT * FROM chrisomar.ERS_Reimbursement";
 
             PreparedStatement prepState = conn.prepareStatement(sql);
 

@@ -167,7 +167,7 @@ async function loadSubmitReimbursement() {
 }
 
 function configureSubmitReimbursement() {
-    console.log('in configureRegister()');
+    console.log('in configureSubmitReimbursement()');
     document.getElementById('reimb-amount').addEventListener('blur', validateReimbAmount);
     document.getElementById('reimb-type').addEventListener('keyup', validateReimbType);
     document.getElementById('description').addEventListener('keyup', validateDescription);
@@ -218,18 +218,18 @@ const DYNAMIC_CSS_LINK = document.getElementById('dynamic-css');
 
 // Display Reimbursement History
 
-async function loadReimbHistory() {
-    console.log('in loadReimbHistory()');
-    APP_VIEW.innerHTML = await fetchView('history.view');
-    // DYNAMIC_CSS_LINK.href = 'css/register.css';
-    configureReimbHistory();
-}
+// async function loadReimbHistory() {
+//     console.log('in loadReimbHistory()');
+//     APP_VIEW.innerHTML = await fetchView('history.view');
+//     // DYNAMIC_CSS_LINK.href = 'css/register.css';
+//     configureReimbHistory();
+// }
 
-function configureReimbHistory() {
+// function configureReimbHistory() {
 
-    console.log('in configureRegister()');
-    document.getElementById('reimb-amount').addEventListener('blur', validateReimbAmount);
-    document.getElementById('reimb-type').addEventListener('keyup', validateReimbType);
-    document.getElementById('description').addEventListener('keyup', validateDescription);
-    document.getElementById('submit-reimb').addEventListener('click', reimbSubmit);
-}
+//     console.log('in configureReimbHistory()');
+//     document.getElementById('reimb-amount').addEventListener('blur', validateReimbAmount);
+//     document.getElementById('reimb-type').addEventListener('keyup', validateReimbType);
+//     document.getElementById('description').addEventListener('keyup', validateDescription);
+//     document.getElementById('submit-reimb').addEventListener('click', reimbSubmit);
+// }
