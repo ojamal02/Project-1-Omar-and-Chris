@@ -1,9 +1,7 @@
 window.onload = function() {
     document.getElementById('to-login').addEventListener('click', loadLogin);
     document.getElementById('to-register').addEventListener('click', loadRegister);
-    //document.getElementById('to-dashboard').addEventListener('click', loadDashboard);
-    //document.getElementById('to-submitReimb').addEventListener('click', loadSubmitReimbursement);
-    //document.getElementById('to-logout').addEventListener('click', logout);
+
 };
 
 /*
@@ -217,3 +215,21 @@ async function reimbSubmit() {
 
 const APP_VIEW = document.getElementById('app-view');
 const DYNAMIC_CSS_LINK = document.getElementById('dynamic-css');
+
+// Display Reimbursement History
+
+async function loadReimbHistory() {
+    console.log('in loadReimbHistory()');
+    APP_VIEW.innerHTML = await fetchView('history.view');
+    // DYNAMIC_CSS_LINK.href = 'css/register.css';
+    configureReimbHistory();
+}
+
+function configureReimbHistory() {
+
+    console.log('in configureRegister()');
+    document.getElementById('reimb-amount').addEventListener('blur', validateReimbAmount);
+    document.getElementById('reimb-type').addEventListener('keyup', validateReimbType);
+    document.getElementById('description').addEventListener('keyup', validateDescription);
+    document.getElementById('submit-reimb').addEventListener('click', reimbSubmit);
+}

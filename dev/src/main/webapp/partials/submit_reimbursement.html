@@ -1,33 +1,35 @@
 <div id="registration-look">
-    <div class="control-group">
-        <div class="form-group floating-label-form-group controls mb-0 pb-2">
-            <label>Amount</label>
-            <input class="form-control" id="reimb-amount" type="tel" placeholder="Reimbursement Amount" required="required" data-validation-required-message="Please enter your phone number.">
-            <p class="help-block text-danger"></p>
+    <form>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+
+                <label>Amount</label>
+                <input class="form-control" id="reimb-amount" type="tel" placeholder="Reimbursement Amount" required="required" data-validation-required-message="Please enter your phone number.">
+                <p class="help-block text-danger"></p>
+            </div>
         </div>
-    </div>
-    <div class="control-group">
-        <div class="form-group floating-label-form-group controls mb-0 pb-2">
-            <label>Type</label>
-            <select id="reimb-type" name="typelist">
-                <option value="1">Relocation</option>
-                <option value="2">Training</option>
-                <option value="3">Travel</option>
-                <option value="4">Miscellaneous</option>
-              </select>
-            <p class="help-block text-danger"></p>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <select id="reimb-type" name="typelist">
+                    <option value="1">Relocation</option>
+                    <option value="2">Training</option>
+                    <option value="3">Travel</option>
+                    <option value="4">Miscellaneous</option>
+                </select>
+                <p class="help-block text-danger"></p>
+            </div>
         </div>
-    </div>
-    <div class="control-group">
-        <div class="form-group floating-label-form-group controls mb-0 pb-2">
-            <label>Description</label>
-            <textarea id="description" rows="4" cols="50">Description</textarea>
-            <p class="help-block text-danger"></p>
+        <div class="control-group">
+            <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                <label>Description</label>
+                <textarea id="description" rows="4" cols="50">Description</textarea>
+                <p class="help-block text-danger"></p>
+            </div>
         </div>
-    </div>
-    <br>
-    <div id="success"></div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-xl" id="submit-reimb">Send</button>
-    </div>
+        <br>
+        <div id="success"></div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-xl" id="submit-reimb">Send</button>
+        </div>
+    </form>
 </div>

@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.revature.models.Reimbursement;
 import com.revature.service.ReimbService;
-import com.revature.service.UserService;
 
 import java.io.IOException;
 import java.io.PrintWriter;

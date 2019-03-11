@@ -42,9 +42,9 @@ public class RequestViewHelper {
             	log.info("Fetching submit_reimbursement.html");
             	principal = (Principal) request.getAttribute("principal");
             	return "partials/submit_reimbursement.html";
-            case "/Project_1/view_history.html":
+            case "/Project_1/history.html":
             	log.info("Fetching view_history.view");
-            	return "partials/view_history.html";
+            	return "partials/history.html";
 
             default:
                 log.info("Invalid view requested");
