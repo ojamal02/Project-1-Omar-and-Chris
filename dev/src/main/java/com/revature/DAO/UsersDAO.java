@@ -35,7 +35,7 @@ public class UsersDAO implements DAO<User>{
 				User.setFirstName(rs.getString("user_first_name"));
 				User.setLastName(rs.getString("user_last_name"));
 				User.setEmail(rs.getString("user_email"));
-				User.setRole_id(rs.getInt("ers_user_role_id"));
+				User.setRole_id(rs.getInt("user_role_id"));
 				users.add(User);
 			}
 
@@ -67,7 +67,7 @@ public class UsersDAO implements DAO<User>{
 				User.setFirstName(rs.getString("user_first_name"));
 				User.setLastName(rs.getString("user_last_name"));
 				User.setEmail(rs.getString("user_email"));
-				User.setRole_id(rs.getInt("ers_user_role_id"));
+				User.setRole_id(rs.getInt("user_role_id"));
 				users.add(User);
 			}
 
@@ -81,32 +81,33 @@ public class UsersDAO implements DAO<User>{
 	}
 
 	public User getByCredentials(String username, String password) {
-		User User = new User();
+		User user = new User();
 		//User users = null;
 
 		try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM chrisomar.ers_users JOIN chrisomar.ers_user_roles USING (ers_user_role_id) WHERE ers_username = ? AND ers_password = ?");
+			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM chrisomar.ers_users JOIN chrisomar.ers_user_roles ON ers_users.user_role_id = ers_user_roles.ers_user_role_id WHERE ers_username = ? AND ers_password = ?");
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 
 			ResultSet rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-				User.setUser_id(rs.getInt("ers_users_id"));
-				User.setUsername(rs.getString("ers_username"));
-				User.setPassword(rs.getString("ers_password"));
-				User.setFirstName(rs.getString("user_first_name"));
-				User.setLastName(rs.getString("user_last_name"));
-				User.setEmail(rs.getString("user_email"));
-				User.setRole_id(rs.getInt("ers_user_role_id"));
+				user.setUser_id(rs.getInt("ers_users_id"));
+				user.setUsername(rs.getString("ers_username"));
+				user.setPassword(rs.getString("ers_password"));
+				user.setFirstName(rs.getString("user_first_name"));
+				user.setLastName(rs.getString("user_last_name"));
+				user.setEmail(rs.getString("user_email"));
+				user.setRole_id(rs.getInt("user_role_id"));
 			}
 
 		} catch (SQLException e) {
 			log.error(e.getMessage());
 		}
-
-		return User;
+		
+		System.out.println(user);
+		return user;
 	}
 
 	@Override
@@ -115,7 +116,7 @@ public class UsersDAO implements DAO<User>{
 
 			conn.setAutoCommit(false);
 
-			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO chrisomar.ers_users VALUES (0, ?, ?, ?, ?, ?, 2)", new String[] {"ers_users_id"});
+			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO chrisomar.ers_users VALUES (0, ?, ?, ?, ?, ?, 1)", new String[] {"ers_users_id"});
 			
 			pstmt.setString(1, newUser.getUsername());
 			pstmt.setString(2, newUser.getPassword());

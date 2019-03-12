@@ -43,7 +43,7 @@ public class UserServlet extends HttpServlet {
 				return;
 			}
 			
-			if(requestURI.equals("/revature_book_store_v3/users") || requestURI.equals("/revature_book_store_v3/users/")) {
+			if(requestURI.equals("/Project_1/users") || requestURI.equals("/Project_1/users/")) {
 				
 				if (!principal.getRole_id().equalsIgnoreCase("ADMIN")) {
 					log.warn("Unauthorized access attempt made from origin: " + req.getLocalAddr());
@@ -62,7 +62,7 @@ public class UserServlet extends HttpServlet {
 				
 				int userId = Integer.parseInt(fragments[3]);
 					
-				if (!principal.getRole_id().equalsIgnoreCase("ADMIN") && !principal.getRole_id().equalsIgnoreCase(Integer.toString(userId))) {
+				if (!principal.getRole_id().equalsIgnoreCase("1") && !principal.getRole_id().equalsIgnoreCase(Integer.toString(userId))) {
 					log.warn("Unauthorized access attempt made from origin: " + req.getLocalAddr());
 					resp.setStatus(401);
 					return;

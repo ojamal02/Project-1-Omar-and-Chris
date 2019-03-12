@@ -15,7 +15,6 @@ import org.apache.log4j.Logger;
 
 public class ReimbursementDAO implements DAO<Reimbursement> {
 
-	Principal principal = new Principal();
 	private static Logger log = Logger.getLogger(ReimbService.class);
     
 	
@@ -24,6 +23,7 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
     public Reimbursement getById(int reimb_id) {
     		
         Reimbursement reimb = new Reimbursement();
+        User user = new User();
         ArrayList<Reimbursement> reimbursements = new ArrayList<>();
 
         try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
@@ -70,26 +70,6 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
 
     }
     
-//    public Reimbursement getByAuthor(int author_id) {
-//    	
-//    	try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
-//    		
-//    		String sql = "SELECT * FROM chrisomar.ers_reimbursement JOIN chrisomar.ers_users ON ers_reimbursement.reimb_author = ers_users.ers_users_id WHERE reimb_author = ?";
-//    	
-//    		 PreparedStatement pstmt = conn.prepareStatement(sql);
-//    		 
-//    		 pstmt.setInt(1, author_id);
-//
-//             ResultSet rs = pstmt.executeQuery();
-//             
-//             while (rs.next()) {
-//            	 
-//             }
-//    		
-//    	} catch (SQLException sqle) {
-//    		
-//    	}
-//    }
 
     @Override
     public Reimbursement add(Reimbursement reimb) {
@@ -105,8 +85,7 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
             pstmt.setDouble(1, reimb.getReimbAmt());
             pstmt.setTimestamp(2, getCurrentTimeStamp());
             pstmt.setString(3, reimb.getReimbDesc());
-            System.out.println(principal);
-            pstmt.setInt(4, user.getUser_id());
+            pstmt.setInt(4, reimb.getReimbAuthor());
             pstmt.setInt(5, reimb.getReimbTypeID());
            
 

@@ -58,7 +58,7 @@ public class JWTFilter extends HttpFilter {
             log.info(principal.getUser_id());
             log.info(claims.getId());
             principal.setRole_id(claims.get("role", String.class));
-
+            
             // 6. Attach an attribute to the request indicating information about the principal
             req.setAttribute("principal", principal);
 

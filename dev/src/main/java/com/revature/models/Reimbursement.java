@@ -1,16 +1,19 @@
 package com.revature.models;
 
-import java.sql.Blob;
+
 import java.sql.Timestamp;
 import java.util.Objects;
+import com.revature.DAO.UsersDAO;
 
 public class Reimbursement {
 
+	User user = new User();
+	UsersDAO userDao = new UsersDAO();
+	
     private int reimbID;
     private double reimbAmt;
     private Timestamp reimbSubmitted;
     private String reimbDesc;
-    // Foreign keys
     private int reimbAuthor;
     private int reimbResolver;
     private int reimbStatusID;
@@ -19,7 +22,7 @@ public class Reimbursement {
     public Reimbursement() {
     }
 
-    public Reimbursement(int reimbID, double reimbAmt, Timestamp reimbSubmitted, Timestamp reimbResolved, String reimbDesc, Blob reimbReceipt, int reimbAuthor, int reimbResolver, int reimbStatusID, int reimbTypeID) {
+    public Reimbursement(int reimbID, double reimbAmt, Timestamp reimbSubmitted, String reimbDesc, int reimbAuthor, int reimbResolver, int reimbStatusID, int reimbTypeID) {
         this.reimbID = reimbID;
         this.reimbAmt = reimbAmt;
         this.reimbSubmitted = reimbSubmitted;
@@ -27,6 +30,10 @@ public class Reimbursement {
         this.reimbDesc = reimbDesc;
 
         this.reimbAuthor = reimbAuthor;
+  
+        
+        System.out.println(this.reimbAuthor);
+        
         this.reimbResolver = reimbResolver;
         this.reimbStatusID = reimbStatusID;
         this.reimbTypeID = reimbTypeID;
@@ -70,11 +77,13 @@ public class Reimbursement {
    
 
     public int getReimbAuthor() {
-        return reimbAuthor;
+        System.out.println(user.getUser_id() + " In getReimbAuthor");
+        return user.getUser_id();
+        
     }
 
     public void setReimbAuthor(int reimbAuthor) {
-        this.reimbAuthor = reimbAuthor;
+        this.reimbAuthor = user.getUser_id();
     }
 
     public int getReimbResolver() {
@@ -110,7 +119,7 @@ public class Reimbursement {
 
                 ", reimbDesc='" + reimbDesc + '\'' +
 
-                ", reimbAuthor=" + reimbAuthor +
+                ", reimbAuthor=" + user.getUser_id() +
                 ", reimbResolver=" + reimbResolver +
                 ", reimbStatusID=" + reimbStatusID +
                 ", reimbTypeID=" + reimbTypeID +

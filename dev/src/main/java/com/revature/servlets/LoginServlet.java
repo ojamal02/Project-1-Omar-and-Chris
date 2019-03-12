@@ -30,6 +30,7 @@ public class LoginServlet extends HttpServlet {
 
         try {
             credentials = mapper.readValue(req.getInputStream(), String[].class);
+            log.info(credentials);
         } catch (MismatchedInputException mie) {
             log.error(mie.getMessage());
             resp.setStatus(400);
