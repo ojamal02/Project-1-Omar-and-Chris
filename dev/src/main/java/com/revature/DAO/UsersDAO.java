@@ -106,7 +106,7 @@ public class UsersDAO implements DAO<User>{
 			log.error(e.getMessage());
 		}
 		
-		System.out.println(user);
+		System.out.println(user + " line 109 UsersDAO");
 		return user;
 	}
 

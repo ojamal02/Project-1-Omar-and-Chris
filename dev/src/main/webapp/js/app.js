@@ -52,7 +52,14 @@ async function login() {
     if (response.status == 200) {
         console.log()
             // document.getElementById('alert-msg').hidden = true;
-        localStorage.setItem('jwt', response.headers.get('Authorization'));
+        let user = [];
+        let resp = await response.json();
+        user.push(resp.user_id);
+        user.push(resp.role_id);
+        createCookie("user", user, 5);
+        console.log(readCookie("user"));
+        let test = readCookie("user");
+        console.log(test);
         loadDashboard();
     } else {
         document.getElementById('alert-msg').hidden = false;
@@ -147,8 +154,9 @@ async function fetchView(uri) {
         method: 'GET',
         mode: 'cors',
         headers: {
-            'Authorization': localStorage.getItem('jwt')
-        }
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
     });
 
     if (response.status == 401) loadLogin();
@@ -192,11 +200,15 @@ function validateDescription(event) {
 async function reimbSubmit() {
     console.log('in reimbSubmit()');
 
+    let authorCookie = readCookie("user").split(",");
+    console.log(authorCookie);
+
     let newReimb = {
         reimbID: 0,
         reimbAmt: document.getElementById('reimb-amount').value,
         reimbTypeID: document.getElementById('reimb-type').value,
         reimbDesc: document.getElementById('description').value,
+        reimbAuthor: authorCookie[0],
         reimbStatusID: 1
     };
 
@@ -204,13 +216,40 @@ async function reimbSubmit() {
         method: 'POST',
         mode: 'cors',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            // 'Authorization': localStorage.getItem('jwt')
         },
         body: JSON.stringify(newReimb)
     });
 
     let responseBody = await response.json();
     console.log(responseBody);
+}
+
+function createCookie(name, value, days) {
+
+    let expires;
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    } else expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name, "", -1);
 }
 
 const APP_VIEW = document.getElementById('app-view');

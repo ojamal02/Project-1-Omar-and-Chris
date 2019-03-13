@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import com.revature.models.User;
 import com.revature.service.UserService;
-import com.revature.util.JWTConfig;
-import com.revature.util.JWTGenerator;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -14,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/auth")
 public class LoginServlet extends HttpServlet {
@@ -27,6 +26,8 @@ public class LoginServlet extends HttpServlet {
 
         ObjectMapper mapper = new ObjectMapper();
         String[] credentials = null;
+        PrintWriter out = null;
+        out = resp.getWriter();
 
         try {
             credentials = mapper.readValue(req.getInputStream(), String[].class);
@@ -53,8 +54,10 @@ public class LoginServlet extends HttpServlet {
             resp.setStatus(401);
             return;
         }
-
+        
         resp.setStatus(200);
-        resp.addHeader(JWTConfig.HEADER, JWTConfig.PREFIX + JWTGenerator.createJWT(user));
+        resp.setContentType("application/json");
+        String str = mapper.writeValueAsString(user);
+        out.write(str);
     }
 }

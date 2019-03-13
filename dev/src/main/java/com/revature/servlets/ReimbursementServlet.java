@@ -32,7 +32,7 @@ public class ReimbursementServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Principal principal = (Principal) req.getAttribute("principal");
-		System.out.println(principal + " line 31");
+		System.out.println(principal + " line 35 -- ReimbursementServlet");
 		Reimbursement reimb = null;
 		ObjectMapper mapper = new ObjectMapper();
 		

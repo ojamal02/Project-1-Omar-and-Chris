@@ -6,3 +6,8 @@ body {
     padding: 3rem 1.5rem;
     text-align: center;
 }
+
+#reimburse {
+    font-size: 3rem;
+    line-height: 3rem
+}

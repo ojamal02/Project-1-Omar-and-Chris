@@ -5,7 +5,13 @@ public class Principal {
     private String user_id;
     private String role_id;
 
-    public Principal() {
+    public Principal(String user_id, String role_id) {
+		super();
+		this.user_id = user_id;
+		this.role_id = role_id;
+	}
+
+	public Principal() {
         super();
     }
 

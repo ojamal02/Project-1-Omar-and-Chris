@@ -25,22 +25,12 @@ public class RequestViewHelper {
                 return "partials/register.html";
 
             case "/Project_1/dashboard.view":
-            
-
-                Principal principal = (Principal) request.getAttribute("principal");
-                log.info(principal.getUser_id());
-                log.info(principal.getRole_id());
-
-                if(principal == null) {
-                    log.warn("No principal attribute found on request object");
-                    return null;
-                }
-
+             
                 log.info("Fetching dashboard.html");
                 return "partials/dashboard.html";
             case "/Project_1/submit_reimbursement.view":
             	log.info("Fetching submit_reimbursement.html");
-            	principal = (Principal) request.getAttribute("principal");
+            	
             	return "partials/submit_reimbursement.html";
             case "/Project_1/history.html":
             	log.info("Fetching view_history.view");

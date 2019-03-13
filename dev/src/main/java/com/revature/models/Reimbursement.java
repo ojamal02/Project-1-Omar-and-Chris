@@ -32,7 +32,7 @@ public class Reimbursement {
         this.reimbAuthor = reimbAuthor;
   
         
-        System.out.println(this.reimbAuthor);
+        System.out.println(this.reimbAuthor + " in reimbursemnt POJO line 35");
         
         this.reimbResolver = reimbResolver;
         this.reimbStatusID = reimbStatusID;
@@ -65,7 +65,6 @@ public class Reimbursement {
     }
 
     
-
     public String getReimbDesc() {
         return reimbDesc;
     }
@@ -75,15 +74,14 @@ public class Reimbursement {
     }
 
    
-
     public int getReimbAuthor() {
-        System.out.println(user.getUser_id() + " In getReimbAuthor");
-        return user.getUser_id();
+        System.out.println(user.getUser_id() + " In getReimbAuthor reimbursemnt POJO line 80");
+        return reimbAuthor;
         
     }
 
     public void setReimbAuthor(int reimbAuthor) {
-        this.reimbAuthor = user.getUser_id();
+        this.reimbAuthor = reimbAuthor;
     }
 
     public int getReimbResolver() {
