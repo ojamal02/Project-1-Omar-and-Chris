@@ -25,16 +25,36 @@ public class RequestViewHelper {
                 return "partials/register.html";
 
             case "/Project_1/dashboard.view":
-             
                 log.info("Fetching dashboard.html");
                 return "partials/dashboard.html";
+                
+            case "/Project_1/managerdash.view":
+            	log.info("Fetching managerdash.html");
+            	return "partials/managerdash.html";
+                
             case "/Project_1/submit_reimbursement.view":
             	log.info("Fetching submit_reimbursement.html");
-            	
             	return "partials/submit_reimbursement.html";
-            case "/Project_1/history.html":
-            	log.info("Fetching view_history.view");
+            	
+            case "/Project_1/history.view":
+            	log.info("Fetching history.html");
             	return "partials/history.html";
+            	
+            case "/Project_1/contact.view":
+            	log.info("Fetching contact.html");
+            	return "partials/contact.html";
+            	
+            case "/Project_1/pending.view":
+            	log.info("Fetching pending.html");
+            	return "partials/pending.html";
+            	
+            case "/Project_1/denials.view":
+            	log.info("Fetching denials.html");
+            	return "partials/denials.html";
+            	
+            case "/Project_1/approvals.view":
+            	log.info("Fetching approvals.html");
+            	return "partials/approvals.html";
 
             default:
                 log.info("Invalid view requested");

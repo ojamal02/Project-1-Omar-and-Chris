@@ -128,7 +128,7 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
     @Override
     public List<Reimbursement> getAll() {
 
-        Reimbursement reimb = new Reimbursement();
+        
         ArrayList<Reimbursement> reimbursements = new ArrayList<>();
 
         try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
@@ -140,6 +140,8 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
             ResultSet rs = prepState.executeQuery();
 
             while(rs.next()) {
+            	
+            	Reimbursement reimb = new Reimbursement();
 
                 reimb.setReimbID(rs.getInt("reimb_id"));
                 reimb.setReimbAmt(rs.getDouble("reimb_amount"));
@@ -156,6 +158,8 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
+        
+        System.out.println(reimbursements);
         return reimbursements;
     }
 }
