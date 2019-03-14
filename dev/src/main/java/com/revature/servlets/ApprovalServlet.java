@@ -30,29 +30,31 @@ public class ApprovalServlet extends HttpServlet {
 	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	
-		Reimbursement reimb = null;
+		
 		ObjectMapper mapper = new ObjectMapper();
 		
 		try {
 			
-			reimb = mapper.readValue(req.getInputStream(), Reimbursement.class);
+			String[] val = mapper.readValue(req.getInputStream(), String[].class);
+			Reimbursement reimb = reimbService.getReimbID(Integer.parseInt(val[0]));
+			if(reimb == null) {
+				log.info("input on update is null");
+				resp.setStatus(400);
+				return;
+			}
+			
+			reimb.setReimbStatusID(Integer.parseInt(val[1]));
+			reimb = reimbService.updateReimb(reimb);
+			
+			String reimbJson = mapper.writeValueAsString(reimb);
+			PrintWriter out = resp.getWriter();
+			out.write(reimbJson);
 			
 		} catch (MismatchedInputException mie) {
 			mie.printStackTrace();
 			log.error(mie.getMessage());
 			resp.setStatus(400);
 			return;
-		}
-		
-		reimb = reimbService.addReimb(reimb);
-		
-		try {
-			String reimbJson = mapper.writeValueAsString(reimb);
-			PrintWriter out = resp.getWriter();
-			out.write(reimbJson);
-		} catch (Exception e) {
-			log.error(e.getMessage());
-			resp.setStatus(500);
 		}
     	
     }

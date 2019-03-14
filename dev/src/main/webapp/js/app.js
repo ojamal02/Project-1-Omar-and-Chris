@@ -363,42 +363,123 @@ async function getReimbursements() {
     // createDisplayResults(x);
 
     let output = '';
+    //let check = '<img src="assets/approved_PNG30-small.png" id="approve">'
+    let table = document.getElementById("display-table");
+    table.innerHTML = "";
 
     for (let i = 0; i < x.length; i++) {
 
+        let row = document.createElement("tr");
 
+
+        let one = document.createElement("td");
+        one.innerText = x[i].reimbID;
+        row.appendChild(one);
+
+        let two = document.createElement("td");
+        two.innerText = x[i].reimbAuthor;
+        row.appendChild(two);
+
+        let three = document.createElement("td");
+        three.innerText = x[i].reimbAmt;
+        row.appendChild(three);
+
+        let four = document.createElement("td");
+        four.innerText = x[i].reimbDesc;
+        row.appendChild(four);
+
+        let five = document.createElement("td");
+        five.innerText = x[i].reimbTypeID;
+        row.appendChild(five);
+
+        let six = document.createElement("td");
+        six.innerText = x[i].reimbStatusID;
+        row.appendChild(six);
+
+        let btntd = document.createElement("td");
+
+
+        let btnimg = document.createElement("img");
+        btnimg.src = "assets/approved_PNG30-small.png";
+        btnimg.addEventListener('click', async function() {
+            approved(x[i].reimbID);
+        });
+        btntd.appendChild(btnimg);
+        row.appendChild(btntd);
+        table.appendChild(row);
         console.log(x[i].reimbID);
         console.log(x[i].reimbAmt);
 
-        output +=
-            '<tr>' +
-            '<td style="width: 100px;">' + x[i].reimbID + '</td>' +
-            '<td style="width: 100px;">' + x[i].reimbAuthor + '</td>' +
-            '<td style="width: 100px;">' + x[i].reimbAmt + '</td>' +
-            '<td style="width: 100px;">' + x[i].reimbDesc + '</td>' +
-            '<td style="width: 100px;">' + x[i].reimbTypeID + '</td>' +
-            '<td style="width: 100px;">' + x[i].reimbStatusID + '</td>' +
-            '</tr>';
+        // output +=
+        //     '<tr>' +
+        //     '<td style="width: 100px;">' + x[i].reimbID + '</td>' +
+        //     '<td style="width: 100px;">' + x[i].reimbAuthor + '</td>' +
+        //     '<td style="width: 100px;">' + x[i].reimbAmt + '</td>' +
+        //     '<td style="width: 100px;">' + x[i].reimbDesc + '</td>' +
+        //     '<td style="width: 100px;">' + x[i].reimbTypeID + '</td>' +
+        //     '<td style="width: 100px;">' + x[i].reimbStatusID + '</td>' +
+        //     '<td style="width: 100px;"><img src="assets/approved_PNG30-small.png" id="approve">' +
+        //     '</tr>';
 
-        document.getElementById("display-table").innerHTML = output;
+        // document.getElementById("display-table").innerHTML = output;
+        // document.getElementById('approve').addEventListener('click', async function() {
+        //     approved(x[i].reimbID);
+        // });
     }
-
-
-
-
-    // for (let i = 0; i < x.length; i++) {
-    //     console.log(x[i].reimbId);
-    // }
-}
-
-// var obj = { "1": 5, "2": 7, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0, "10": 0, "11": 0, "12": 0 }
-// var result = Object.keys(obj).map(function(key) {
-//     return [Number(key), obj[key]];
-// });
-
-// console.log(result);
-
-function createDisplayResults(x) {
-
+    //return x[i].reimbID;
 
 }
+
+async function approved(id) {
+
+    let reimbArray = [];
+    reimbArray.push(id);
+    reimbArray.push(2);
+
+    let response = await fetch('approval', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Authorization': localStorage.getItem('jwt')
+        },
+        body: JSON.stringify(reimbArray)
+    });
+
+    getReimbursements();
+
+}
+
+// function approved() {
+
+//     let authorCookie = readCookie("user").split(",");
+//     console.log(authorCookie);
+
+//     let approvedReimb = {
+//         reimbID: 0,
+//         reimbAmt: document.getElementById('reimb-amount').value,
+//         reimbTypeID: document.getElementById('reimb-type').value,
+//         reimbDesc: document.getElementById('description').value,
+//         reimbAuthor: authorCookie[0],
+//         reimbStatusID: 2
+//     };
+
+//     let response = await fetch('approval', {
+//         method: 'POST',
+//         mode: 'cors',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             // 'Authorization': localStorage.getItem('jwt')
+//         },
+//         body: JSON.stringify(approvedReimb)
+//     });
+
+//     getReimbursements();
+
+// }
+
+// function createDisplayResults(x) {
+
+
+
+// }

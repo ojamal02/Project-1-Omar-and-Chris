@@ -117,7 +117,31 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
 
     //@Override
     public Reimbursement update(Reimbursement updatedObj) {
-        return null;
+        
+    	try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
+			
+			conn.setAutoCommit(false);
+			
+			String sql = "UPDATE chrisomar.ers_reimbursement SET reimb_status_id = ? WHERE reimb_id = ?";
+		
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, updatedObj.getReimbStatusID());
+			pstmt.setInt(2,  updatedObj.getReimbID());
+			
+
+			
+			int rowsUpdated = pstmt.executeUpdate();
+			
+			if(rowsUpdated != 0) {
+				conn.commit();
+				return updatedObj;
+			}
+		} catch (SQLIntegrityConstraintViolationException sicve) {
+			System.out.println("[ERROR] - Username already taken");
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+		return null;
     }
 
     @Override
