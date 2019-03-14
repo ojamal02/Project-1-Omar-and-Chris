@@ -14,20 +14,12 @@ window.onload = function() {
 async function loadLogin() {
     console.log('in loadLogin()');
 
-    // fetchView('login.view').then(view => {
-    //     APP_VIEW.innerHTML = view;
-    //     DYNAMIC_CSS_LINK.href = 'css/login.css';
-    //     configureLogin();
-    // });
-
     APP_VIEW.innerHTML = await fetchView('login.view');
-    //DYNAMIC_CSS_LINK.href = 'css/login.css';
     configureLogin();
 }
 
 function configureLogin() {
     console.log('in configureLogin()');
-    //document.getElementById('alert-msg').hidden = true;
     document.getElementById('loginButton').addEventListener('click', login);
 }
 
@@ -51,7 +43,6 @@ async function login() {
 
     if (response.status == 200) {
         console.log()
-            // document.getElementById('alert-msg').hidden = true;
         let user = [];
         let resp = await response.json();
         user.push(resp.user_id);
@@ -66,6 +57,8 @@ async function login() {
             loadManagerDashboard();
         } else if (authorCookie[1] === "2") {
             loadDashboard();
+        } else if (authorCookie[1] === "0") {
+            loadRegister();
         }
 
     } else {
@@ -89,13 +82,12 @@ async function login() {
 async function loadRegister() {
     console.log('in loadRegister()');
     APP_VIEW.innerHTML = await fetchView('register.view');
-    // DYNAMIC_CSS_LINK.href = 'css/register.css';
+
     configureRegister();
 }
 
 function configureRegister() {
     console.log('in configureRegister()');
-    // document.getElementById('register-username').addEventListener('blur', validateUsername);
     document.getElementById('first-name').addEventListener('blur', validateFirstName);
     document.getElementById('last-name').addEventListener('blur', validateLastName);
     document.getElementById('register-password').addEventListener('keyup', validatePassword);
@@ -190,11 +182,13 @@ async function loadManagerDashboard() {
 async function loadHistory() {
     console.log('In loadManagerHistory()');
     APP_VIEW.innerHTML = await fetchView('history.view');
+    getHistory();
 }
 
 async function loadApprovals() {
     console.log('In loadApprovals()');
     APP_VIEW.innerHTML = await fetchView('approvals.view');
+    getApprovals();
 }
 
 async function loadContact() {
@@ -211,6 +205,7 @@ async function loadPending() {
 async function loadDenials() {
     console.log('In loadDenials()');
     APP_VIEW.innerHTML = await fetchView('denials.view');
+    getDenials();
 }
 
 function configureDashboard() {
@@ -239,7 +234,6 @@ async function fetchView(uri) {
 async function loadSubmitReimbursement() {
     console.log('in loadSubmitReimbursement()');
     APP_VIEW.innerHTML = await fetchView('submit_reimbursement.view');
-    // DYNAMIC_CSS_LINK.href = 'css/register.css';
     configureSubmitReimbursement();
 }
 
@@ -292,7 +286,6 @@ async function reimbSubmit() {
         mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
-            // 'Authorization': localStorage.getItem('jwt')
         },
         body: JSON.stringify(newReimb)
     });
@@ -323,31 +316,17 @@ function readCookie(name) {
     return null;
 }
 
+function logout() {
+    eraseCookie();
+    location.reload();
+}
+
 function eraseCookie(name) {
     createCookie(name, "", -1);
 }
 
 const APP_VIEW = document.getElementById('app-view');
 const DYNAMIC_CSS_LINK = document.getElementById('dynamic-css');
-
-// Display Reimbursement History
-
-// async function loadReimbHistory() {
-//     console.log('in loadReimbHistory()');
-//     APP_VIEW.innerHTML = await fetchView('history.view');
-//     // DYNAMIC_CSS_LINK.href = 'css/register.css';
-//     configureReimbHistory();
-// }
-
-// function configureReimbHistory() {
-
-//     console.log('in configureReimbHistory()');
-//     document.getElementById('reimb-amount').addEventListener('blur', validateReimbAmount);
-//     document.getElementById('reimb-type').addEventListener('keyup', validateReimbType);
-//     document.getElementById('description').addEventListener('keyup', validateDescription);
-//     document.getElementById('submit-reimb').addEventListener('click', reimbSubmit);
-// }
-
 
 async function getReimbursements() {
     let response = await fetch('approval', {
@@ -360,10 +339,9 @@ async function getReimbursements() {
     });
 
     let x = await response.json();
-    // createDisplayResults(x);
 
     let output = '';
-    //let check = '<img src="assets/approved_PNG30-small.png" id="approve">'
+
     let table = document.getElementById("display-table");
     table.innerHTML = "";
 
@@ -399,35 +377,25 @@ async function getReimbursements() {
         let btntd = document.createElement("td");
 
 
-        let btnimg = document.createElement("img");
-        btnimg.src = "assets/approved_PNG30-small.png";
-        btnimg.addEventListener('click', async function() {
+        let btnimgA = document.createElement("img");
+        let btnimgD = document.createElement("img");
+        btnimgA.src = "assets/approved_PNG30-small.png";
+        btnimgD.src = "assets/denied_PNG7-small.png";
+        btnimgA.addEventListener('click', async function() {
             approved(x[i].reimbID);
         });
-        btntd.appendChild(btnimg);
+        btnimgD.addEventListener('click', async function() {
+            denied(x[i].reimbID);
+        });
+
+        btntd.appendChild(btnimgA);
+        btntd.appendChild(btnimgD);
+
         row.appendChild(btntd);
         table.appendChild(row);
         console.log(x[i].reimbID);
         console.log(x[i].reimbAmt);
-
-        // output +=
-        //     '<tr>' +
-        //     '<td style="width: 100px;">' + x[i].reimbID + '</td>' +
-        //     '<td style="width: 100px;">' + x[i].reimbAuthor + '</td>' +
-        //     '<td style="width: 100px;">' + x[i].reimbAmt + '</td>' +
-        //     '<td style="width: 100px;">' + x[i].reimbDesc + '</td>' +
-        //     '<td style="width: 100px;">' + x[i].reimbTypeID + '</td>' +
-        //     '<td style="width: 100px;">' + x[i].reimbStatusID + '</td>' +
-        //     '<td style="width: 100px;"><img src="assets/approved_PNG30-small.png" id="approve">' +
-        //     '</tr>';
-
-        // document.getElementById("display-table").innerHTML = output;
-        // document.getElementById('approve').addEventListener('click', async function() {
-        //     approved(x[i].reimbID);
-        // });
     }
-    //return x[i].reimbID;
-
 }
 
 async function approved(id) {
@@ -450,36 +418,180 @@ async function approved(id) {
 
 }
 
-// function approved() {
+async function denied(id) {
 
-//     let authorCookie = readCookie("user").split(",");
-//     console.log(authorCookie);
+    let reimbArray = [];
+    reimbArray.push(id);
+    reimbArray.push(3);
 
-//     let approvedReimb = {
-//         reimbID: 0,
-//         reimbAmt: document.getElementById('reimb-amount').value,
-//         reimbTypeID: document.getElementById('reimb-type').value,
-//         reimbDesc: document.getElementById('description').value,
-//         reimbAuthor: authorCookie[0],
-//         reimbStatusID: 2
-//     };
+    let response = await fetch('denial', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Authorization': localStorage.getItem('jwt')
+        },
+        body: JSON.stringify(reimbArray)
+    });
 
-//     let response = await fetch('approval', {
-//         method: 'POST',
-//         mode: 'cors',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             // 'Authorization': localStorage.getItem('jwt')
-//         },
-//         body: JSON.stringify(approvedReimb)
-//     });
+    getReimbursements();
 
-//     getReimbursements();
+}
 
-// }
+async function getDenials() {
+    let response = await fetch('denial', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
 
-// function createDisplayResults(x) {
+    let x = await response.json();
+
+    let table = document.getElementById("display-denied-table");
+    table.innerHTML = "";
+
+    for (let i = 0; i < x.length; i++) {
+
+        let row = document.createElement("tr");
+
+
+        let one = document.createElement("td");
+        one.innerText = x[i].reimbID;
+        row.appendChild(one);
+
+        let two = document.createElement("td");
+        two.innerText = x[i].reimbAuthor;
+        row.appendChild(two);
+
+        let three = document.createElement("td");
+        three.innerText = x[i].reimbAmt;
+        row.appendChild(three);
+
+        let four = document.createElement("td");
+        four.innerText = x[i].reimbDesc;
+        row.appendChild(four);
+
+        let five = document.createElement("td");
+        five.innerText = x[i].reimbTypeID;
+        row.appendChild(five);
+
+        let six = document.createElement("td");
+        six.innerText = x[i].reimbStatusID;
+        row.appendChild(six);
+
+        table.appendChild(row);
+        console.log(x[i].reimbID);
+        console.log(x[i].reimbAmt);
+    }
+}
+
+async function getApprovals() {
+    let response = await fetch('cashmoney', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+
+    let x = await response.json();
+
+    let table = document.getElementById("display-approved-table");
+    table.innerHTML = "";
+
+    for (let i = 0; i < x.length; i++) {
+
+        let row = document.createElement("tr");
+
+
+        let one = document.createElement("td");
+        one.innerText = x[i].reimbID;
+        row.appendChild(one);
+
+        let two = document.createElement("td");
+        two.innerText = x[i].reimbAuthor;
+        row.appendChild(two);
+
+        let three = document.createElement("td");
+        three.innerText = x[i].reimbAmt;
+        row.appendChild(three);
+
+        let four = document.createElement("td");
+        four.innerText = x[i].reimbDesc;
+        row.appendChild(four);
+
+        let five = document.createElement("td");
+        five.innerText = x[i].reimbTypeID;
+        row.appendChild(five);
+
+        let six = document.createElement("td");
+        six.innerText = x[i].reimbStatusID;
+        row.appendChild(six);
+
+        table.appendChild(row);
+        console.log(x[i].reimbID);
+        console.log(x[i].reimbAmt);
+    }
+
+
+}
+
+async function getHistory() {
+    let response = await fetch('history', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+
+    let x = await response.json();
+
+    let table = document.getElementById("history-table");
+    table.innerHTML = "";
+    console.log(x);
+
+    let authorCookie = readCookie("user").split(",");
+    console.log(authorCookie[0]);
 
 
 
-// }
+    for (let i = 0; i < x.length; i++) {
+        if (x[i].reimbAuthor == authorCookie[0]) {
+            let row = document.createElement("tr");
+
+            let one = document.createElement("td");
+            one.innerText = x[i].reimbID;
+            row.appendChild(one);
+
+            let two = document.createElement("td");
+            two.innerText = x[i].reimbAuthor;
+            row.appendChild(two);
+
+            let three = document.createElement("td");
+            three.innerText = x[i].reimbAmt;
+            row.appendChild(three);
+
+            let four = document.createElement("td");
+            four.innerText = x[i].reimbDesc;
+            row.appendChild(four);
+
+            let five = document.createElement("td");
+            five.innerText = x[i].reimbTypeID;
+            row.appendChild(five);
+
+            let six = document.createElement("td");
+            six.innerText = x[i].reimbStatusID;
+            row.appendChild(six);
+
+            table.appendChild(row);
+            console.log(x[i].reimbID);
+            console.log(x[i].reimbAmt);
+        }
+    }
+}

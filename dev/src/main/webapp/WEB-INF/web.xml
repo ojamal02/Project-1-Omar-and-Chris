@@ -9,6 +9,34 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  
+  <servlet>
+    <description></description>
+    <display-name>DenialServlet</display-name>
+    <servlet-name>DenialServlet</servlet-name>
+    <servlet-class>com.revature.servlets.DenialServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DenialServlet</servlet-name>
+    <url-pattern>/DenialServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CashMoneyServlet</display-name>
+    <servlet-name>CashMoneyServlet</servlet-name>
+    <servlet-class>com.revature.servlets.CashMoneyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CashMoneyServlet</servlet-name>
+    <url-pattern>/CashMoneyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HistoryServlet</display-name>
+    <servlet-name>HistoryServlet</servlet-name>
+    <servlet-class>com.revature.servlets.HistoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HistoryServlet</servlet-name>
+    <url-pattern>/HistoryServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

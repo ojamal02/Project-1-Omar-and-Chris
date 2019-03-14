@@ -2,7 +2,6 @@ package com.revature.util;
 
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
-import com.revature.models.Principal;
 
 public class RequestViewHelper {
 
