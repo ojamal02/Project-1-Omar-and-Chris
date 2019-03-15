@@ -43,11 +43,12 @@ async function login() {
     });
 
     if (response.status == 200) {
-        console.log()
+
         let user = [];
         let resp = await response.json();
         user.push(resp.user_id);
         user.push(resp.role_id);
+        user.push(resp.firstName);
         createCookie("user", user, 5);
         console.log(readCookie("user"));
         let test = readCookie("user");
@@ -66,6 +67,13 @@ async function login() {
         document.getElementById('alert-msg').hidden = false;
     }
 
+}
+
+function displayFirstName() {
+
+    let nameCookie = readCookie("user").split(",");
+    let name = nameCookie[2];
+    document.getElementById('dashboard-name').innerHTML = name + "'s Dashboard";
 }
 
 //-------------------------------------------------------------------------------------
@@ -91,7 +99,7 @@ function configureRegister() {
     console.log('in configureRegister()');
     window.scrollTo(0, 600);
     document.getElementById('first-name').addEventListener('blur', validateFirstName);
-    document.getElementById('last-name').addEventListener('blur', validateLastName);
+    document.getElementById('last-name').addEventListener('keyup', validateLastName);
     document.getElementById('register-password').addEventListener('keyup', validatePassword);
     document.getElementById('register-account').addEventListener('click', register);
 }
@@ -161,12 +169,19 @@ async function register() {
 /*
     Dashboard component
         - loadDashboard()
+        - loadManagerDashboard()
+        - loadHistory()
+        - loadApprovals()
+        - loadContact()
+        - loadPending()
+        - loadDenials()
  */
 
 async function loadDashboard() {
     console.log('in loadDashboard()');
     APP_VIEW.innerHTML = await fetchView('dashboard.view');
     configureDashboard();
+    displayFirstName();
     document.getElementById('to-submitReimb').addEventListener('click', loadSubmitReimbursement);
     document.getElementById('reimb-history').addEventListener('click', loadHistory);
     document.getElementById('contact-form').addEventListener('click', loadContact)
@@ -176,6 +191,7 @@ async function loadManagerDashboard() {
     console.log('In loadManagerDashboard()');
     APP_VIEW.innerHTML = await fetchView('managerdash.view');
     configureDashboard();
+    displayFirstName();
     document.getElementById('to-pending').addEventListener('click', loadPending);
     document.getElementById('view-approved').addEventListener('click', loadApprovals);
     document.getElementById('view-denied').addEventListener('click', loadDenials);
@@ -242,7 +258,7 @@ async function loadSubmitReimbursement() {
 function configureSubmitReimbursement() {
     console.log('in configureSubmitReimbursement()');
     document.getElementById('reimb-amount').addEventListener('blur', validateReimbAmount);
-    document.getElementById('reimb-type').addEventListener('blur', validateReimbType);
+    document.getElementById('reimb-type').addEventListener('selected', validateReimbType);
     document.getElementById('description').addEventListener('keyup', validateDescription);
     document.getElementById('submit-reimb').addEventListener('click', reimbSubmit);
 }
@@ -297,6 +313,12 @@ async function reimbSubmit() {
 
     loadDashboard();
 }
+
+/*
+
+    - Cookie Creation
+
+*/
 
 function createCookie(name, value, days) {
 
@@ -389,6 +411,7 @@ async function getReimbursements() {
         });
 
         btntd.appendChild(btnimgA);
+
         btntd.appendChild(btnimgD);
 
         row.appendChild(btntd);
