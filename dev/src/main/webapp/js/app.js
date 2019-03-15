@@ -19,6 +19,7 @@ async function loadLogin() {
 }
 
 function configureLogin() {
+    window.scrollTo(0, 500);
     console.log('in configureLogin()');
     document.getElementById('loginButton').addEventListener('click', login);
 }
@@ -88,6 +89,7 @@ async function loadRegister() {
 
 function configureRegister() {
     console.log('in configureRegister()');
+    window.scrollTo(0, 600);
     document.getElementById('first-name').addEventListener('blur', validateFirstName);
     document.getElementById('last-name').addEventListener('blur', validateLastName);
     document.getElementById('register-password').addEventListener('keyup', validatePassword);
@@ -240,7 +242,7 @@ async function loadSubmitReimbursement() {
 function configureSubmitReimbursement() {
     console.log('in configureSubmitReimbursement()');
     document.getElementById('reimb-amount').addEventListener('blur', validateReimbAmount);
-    document.getElementById('reimb-type').addEventListener('keyup', validateReimbType);
+    document.getElementById('reimb-type').addEventListener('blur', validateReimbType);
     document.getElementById('description').addEventListener('keyup', validateDescription);
     document.getElementById('submit-reimb').addEventListener('click', reimbSubmit);
 }
@@ -292,6 +294,8 @@ async function reimbSubmit() {
 
     let responseBody = await response.json();
     console.log(responseBody);
+
+    loadDashboard();
 }
 
 function createCookie(name, value, days) {
@@ -316,10 +320,6 @@ function readCookie(name) {
     return null;
 }
 
-function logout() {
-    eraseCookie();
-    location.reload();
-}
 
 function eraseCookie(name) {
     createCookie(name, "", -1);
