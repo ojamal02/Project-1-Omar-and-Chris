@@ -1,6 +1,6 @@
 package com.revature.DAO;
 
-import com.revature.models.Principal;
+
 import com.revature.models.Reimbursement;
 import com.revature.models.User;
 import com.revature.service.ReimbService;
@@ -94,13 +94,10 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
                 // Retrieve the generated primary key for the newly added user
                 ResultSet rs = pstmt.getGeneratedKeys();
 
-
 			while(rs.next()) {
 				reimb.setReimbID(rs.getInt(1));
 			}
-
                 conn.commit();
-
             }
 
         } catch (SQLIntegrityConstraintViolationException sicve) {
@@ -109,8 +106,6 @@ public class ReimbursementDAO implements DAO<Reimbursement> {
         } catch (SQLException e) {
             log.error(e.getMessage());
         }
-
-        //if(newUser.getId() == 0) return null;
 
         return reimb;
     }

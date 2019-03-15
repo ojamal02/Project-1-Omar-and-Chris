@@ -1,7 +1,7 @@
 window.onload = function() {
     document.getElementById('to-login').addEventListener('click', loadLogin);
     document.getElementById('to-register').addEventListener('click', loadRegister);
-
+    //document.getElementById('return-btn').addEventListener('click', )
 };
 
 /*
@@ -257,6 +257,7 @@ async function loadSubmitReimbursement() {
 
 function configureSubmitReimbursement() {
     console.log('in configureSubmitReimbursement()');
+    window.scrollTo(0, 600);
     document.getElementById('reimb-amount').addEventListener('blur', validateReimbAmount);
     document.getElementById('reimb-type').addEventListener('selected', validateReimbType);
     document.getElementById('description').addEventListener('keyup', validateDescription);
@@ -310,8 +311,6 @@ async function reimbSubmit() {
 
     let responseBody = await response.json();
     console.log(responseBody);
-
-    loadDashboard();
 }
 
 /*
@@ -401,8 +400,12 @@ async function getReimbursements() {
 
         let btnimgA = document.createElement("img");
         let btnimgD = document.createElement("img");
+        let spacer = document.createElement("img");
+
         btnimgA.src = "assets/approved_PNG30-small.png";
+        spacer.src = "assets/10x10-ffffff7f.png";
         btnimgD.src = "assets/denied_PNG7-small.png";
+
         btnimgA.addEventListener('click', async function() {
             approved(x[i].reimbID);
         });
@@ -411,7 +414,7 @@ async function getReimbursements() {
         });
 
         btntd.appendChild(btnimgA);
-
+        btntd.appendChild(spacer);
         btntd.appendChild(btnimgD);
 
         row.appendChild(btntd);
@@ -419,6 +422,8 @@ async function getReimbursements() {
         console.log(x[i].reimbID);
         console.log(x[i].reimbAmt);
     }
+
+    window.scrollTo(0, 600);
 }
 
 async function approved(id) {
@@ -509,6 +514,7 @@ async function getDenials() {
         console.log(x[i].reimbID);
         console.log(x[i].reimbAmt);
     }
+    window.scrollTo(0, 600);
 }
 
 async function getApprovals() {
@@ -559,7 +565,7 @@ async function getApprovals() {
         console.log(x[i].reimbID);
         console.log(x[i].reimbAmt);
     }
-
+    window.scrollTo(0, 600);
 
 }
 
@@ -577,12 +583,8 @@ async function getHistory() {
 
     let table = document.getElementById("history-table");
     table.innerHTML = "";
-    console.log(x);
 
     let authorCookie = readCookie("user").split(",");
-    console.log(authorCookie[0]);
-
-
 
     for (let i = 0; i < x.length; i++) {
         if (x[i].reimbAuthor == authorCookie[0]) {
@@ -613,8 +615,7 @@ async function getHistory() {
             row.appendChild(six);
 
             table.appendChild(row);
-            console.log(x[i].reimbID);
-            console.log(x[i].reimbAmt);
         }
     }
+    window.scrollTo(0, 600);
 }
